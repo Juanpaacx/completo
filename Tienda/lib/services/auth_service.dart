@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class AuthService {
   final String baseUrl =
-      "http://192.168.100.36:8080/users"; // Cambia la URL según tu backend
+      "http://10.50.32.20:8080/api/users"; // Cambia la URL según tu backend
 // 172.27.160.1
   // 192.168.100.36
   Future<bool> login(String email, String password) async {

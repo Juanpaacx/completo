@@ -19,7 +19,7 @@ import com.tuestilo.tu_estilo_backend.model.Product;
 import com.tuestilo.tu_estilo_backend.repository.ProductRepository;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired

@@ -21,7 +21,7 @@ import com.tuestilo.tu_estilo_backend.service.UsuarioService;
  */
 @RestController
 // Definimos la ruta base para los endpoints de este controlador
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UsuarioController {
 
     // Inyectamos el servicio de usuarios

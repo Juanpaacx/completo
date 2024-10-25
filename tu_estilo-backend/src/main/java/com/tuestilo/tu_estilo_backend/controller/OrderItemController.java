@@ -17,7 +17,7 @@ import com.tuestilo.tu_estilo_backend.model.OrderItem;
 import com.tuestilo.tu_estilo_backend.service.OrderItemService;
 
 @RestController
-@RequestMapping("/order-items") // Ruta base para los OrderItems
+@RequestMapping("/api/order-items") // Ruta base para los OrderItems
 public class OrderItemController {
 
     private final OrderItemService orderItemService;

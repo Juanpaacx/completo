@@ -3,7 +3,8 @@ import 'package:http/http.dart' as http;
 import '../models/product_model.dart';
 
 class ProductService {
-  final String baseUrl = "http://192.168.100.36:8080/products"; // URL de tu API
+  final String baseUrl =
+      "http://10.50.32.20:8080/api/products"; // URL de tu API
 
   // Método para obtener los productos
   Future<List<Product>> fetchProducts() async {
@@ -13,7 +14,8 @@ class ProductService {
         Uri.parse(baseUrl),
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*", // Añadir header para permitir cualquier origen
+          "Access-Control-Allow-Origin":
+              "*", // Añadir header para permitir cualquier origen
         },
       );
 
@@ -22,7 +24,8 @@ class ProductService {
         return body.map((dynamic item) => Product.fromJson(item)).toList();
       } else {
         print("Error: ${response.statusCode}");
-        throw Exception("Error al cargar los productos: ${response.statusCode}");
+        throw Exception(
+            "Error al cargar los productos: ${response.statusCode}");
       }
     } catch (e) {
       print("Error de conexión: $e");

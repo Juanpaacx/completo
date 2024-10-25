@@ -16,7 +16,7 @@ import com.tuestilo.tu_estilo_backend.model.Category;
 import com.tuestilo.tu_estilo_backend.service.CategoryService;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/api/categories")
 public class CategoryController {
 
     @Autowired

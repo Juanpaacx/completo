@@ -18,13 +18,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp( // Cambiado a GetMaterialApp para usar GetX
+    return GetMaterialApp(
+      // Cambiado a GetMaterialApp para usar GetX
       debugShowCheckedModeBanner: false,
       title: 'Tu estilo, tu camino',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeView(), // Aquí indicamos que LoginView será la pantalla inicial
+      home:
+          LoginView(), // Aquí indicamos que LoginView será la pantalla inicial
     );
   }
 }

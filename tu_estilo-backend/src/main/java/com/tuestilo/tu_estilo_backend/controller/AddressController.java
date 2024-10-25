@@ -18,7 +18,7 @@ import com.tuestilo.tu_estilo_backend.model.Address;
 import com.tuestilo.tu_estilo_backend.service.AddressService;
 
 @RestController
-@RequestMapping("/addresses") // Ruta base para el controlador de Direcciones
+@RequestMapping("/api/addresses") // Ruta base para el controlador de Direcciones
 public class AddressController {
 
     @Autowired
