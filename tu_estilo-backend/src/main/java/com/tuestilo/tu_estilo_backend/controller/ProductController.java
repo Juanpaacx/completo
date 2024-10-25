@@ -1,5 +1,7 @@
 package com.tuestilo.tu_estilo_backend.controller;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,24 +41,41 @@ public class ProductController {
 
     // Crear un nuevo producto
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        Product savedProduct = productRepository.save(product);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
+    public ResponseEntity<String> createProduct(@RequestBody Product product) {
+        try {
+            validateImageUrl(product.getImageUrl());
+            Product savedProduct = productRepository.save(product);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Producto creado con ID: " + savedProduct.getId());
+        } catch (MalformedURLException e) {
+            return ResponseEntity.badRequest().body("URL de imagen inválida: " + e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al crear el producto: " + e.getMessage());
+        }
     }
 
     // Actualizar un producto existente
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
+    public ResponseEntity<String> updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
         return productRepository.findById(id)
                 .map(product -> {
-                    product.setName(productDetails.getName());
-                    product.setDescription(productDetails.getDescription());
-                    product.setPrice(productDetails.getPrice());
-                    product.setImageUrl(productDetails.getImageUrl());
-                    product.setCategory(productDetails.getCategory());
-                    Product updatedProduct = productRepository.save(product);
-                    return ResponseEntity.ok(updatedProduct);
+                    try {
+                        validateImageUrl(productDetails.getImageUrl());
+                        product.setName(productDetails.getName());
+                        product.setDescription(productDetails.getDescription());
+                        product.setPrice(productDetails.getPrice());
+                        product.setImageUrl(productDetails.getImageUrl());
+                        product.setCategory(productDetails.getCategory());
+                        productRepository.save(product);
+                        return ResponseEntity.ok("Producto actualizado con ID: " + product.getId());
+                    } catch (MalformedURLException e) {
+                        return ResponseEntity.badRequest().body("URL de imagen inválida: " + e.getMessage());
+                    }
                 })
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    // Método para validar la URL de la imagen
+    private void validateImageUrl(String imageUrl) throws MalformedURLException {
+        new URL(imageUrl); // Intenta crear una URL para verificar que es válida
     }
 }

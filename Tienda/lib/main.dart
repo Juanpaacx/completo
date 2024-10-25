@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tienda/view/home_view.dart';
 import 'view/login_view.dart'; // Importa la pantalla LoginView
 import 'view_model/login_view_model.dart'; // Controlador del Login
 import 'view_model/product_view_model.dart'; // Controlador de productos
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginView(), // Aquí indicamos que LoginView será la pantalla inicial
+      home: HomeView(), // Aquí indicamos que LoginView será la pantalla inicial
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'product_details_view.dart';
 
 class ElectonicaView extends StatelessWidget {

@@ -54,7 +54,7 @@ class BisuteriaView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bisteria fresa'),
+        title: const Text('Bisuteria fresa'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0), // Reducir padding para más espacio
