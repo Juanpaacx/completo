@@ -8,7 +8,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Permitir CORS para todas las rutas
                 //.allowedOrigins("*") // Cambia según sea necesario
-                .allowedOrigins("http://localhost:8080", "http://192.168.100.36") 
+                .allowedOrigins("http://localhost:8080", "http://192.168.100.36", "http://10.10.9.53") 
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true);

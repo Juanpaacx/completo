@@ -1,4 +1,4 @@
-package com.tuestilo.tu_estilo_backend.dto;
+/*package com.tuestilo.tu_estilo_backend.dto;
 
 public class UserLoginRequest {
     private String email;
@@ -21,3 +21,4 @@ public class UserLoginRequest {
         this.password = password;
     }
 }
+*/

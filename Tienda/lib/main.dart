@@ -5,6 +5,7 @@ import 'view/login_view.dart'; // Importa la pantalla LoginView
 import 'view_model/login_view_model.dart'; // Controlador del Login
 import 'view_model/product_view_model.dart'; // Controlador de productos
 import 'view_model/auth_controller.dart'; // Controlador de autenticación
+import 'view/home_view.dart';
 
 void main() {
   // Registra los controladores antes de ejecutar la aplicación
@@ -25,8 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:
-          LoginView(), // Aquí indicamos que LoginView será la pantalla inicial
+      home: HomeView(), // Aquí indicamos que LoginView será la pantalla inicial
     );
   }
 }

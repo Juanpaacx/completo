@@ -3,8 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/product_model.dart';
 
 class ProductService {
-  final String baseUrl =
-      "http://10.50.32.20:8080/api/products"; // URL de tu API
+  final String baseUrl = "http://10.10.9.53:8080/api/products"; // URL de tu API
 
   // Método para obtener los productos
   Future<List<Product>> fetchProducts() async {
