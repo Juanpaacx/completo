@@ -1,17 +1,11 @@
 package com.tuestilo.tu_estilo_backend.controller;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,7 +32,7 @@ public class ProductController {
                 .map(product -> ResponseEntity.ok().body(product))
                 .orElse(ResponseEntity.notFound().build());
     }
-
+/* 
     // Crear un nuevo producto
     @PostMapping
     public ResponseEntity<String> createProduct(@RequestBody Product product) {
@@ -72,10 +66,10 @@ public class ProductController {
                     }
                 })
                 .orElse(ResponseEntity.notFound().build());
-    }
-
+    }*/
+/* 
     // Método para validar la URL de la imagen
     private void validateImageUrl(String imageUrl) throws MalformedURLException {
         new URL(imageUrl); // Intenta crear una URL para verificar que es válida
-    }
+    */
 }

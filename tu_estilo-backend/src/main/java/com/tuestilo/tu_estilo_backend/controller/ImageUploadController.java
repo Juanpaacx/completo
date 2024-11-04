@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/api/api/uploads")
+@RequestMapping("/api/uploads")
 public class ImageUploadController {
 
     // Directorio donde se guardarán las imágenes

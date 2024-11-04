@@ -8,6 +8,7 @@ import 'package:tienda/view/ropa_hombres_view.dart';
 import 'package:tienda/view/ropa_mujeres_view.dart';
 import 'package:tienda/view/bisuteria_view.dart';
 import 'package:tienda/view/electonica_view.dart';
+import 'ProductDetaisView.dart';
 
 class HomeView extends StatelessWidget {
   final ProductService productService = ProductService();
@@ -73,16 +74,16 @@ class HomeView extends StatelessWidget {
                         child: Text('Ropa Hombres'),
                       ),
                       SizedBox(width: 8),
-                      ElevatedButton(
+                      /*ElevatedButton(
                         onPressed: () {
                           Get.to(() => RopaMujeresView());
                         },
                         child: Text('Ropa Mujeres'),
-                      ),
+                      ),*/
                       SizedBox(width: 8),
                       ElevatedButton(
                         onPressed: () {
-                          Get.to(() => ElectonicaView());
+                          Get.to(() => ElectronicaView());
                         },
                         child: Text('Electrónica'),
                       ),
@@ -99,48 +100,67 @@ class HomeView extends StatelessWidget {
                 // Listado de productos
                 Expanded(
                   child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3, // Ajustar a 3 columnas
                       childAspectRatio: 0.4, // Ajustar la relación ancho-alto
                     ),
                     itemCount: products.length,
                     itemBuilder: (context, index) {
                       final product = products[index];
-                      return Card(
-                        margin: const EdgeInsets.all(8.0),
-                        elevation: 5,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 100, // Altura fija para la imagen
-                              child: Image.network(
-                                product.imageUrl,
-                                fit: BoxFit.cover,
-                                width: double.infinity,
+                      return GestureDetector(
+                        onTap: () {
+                          // Navegar a la pantalla de detalles del producto
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailsView(
+                                nombre: product.name,
+                                precio: product.price
+                                    .toString(), // Convertir a String si es necesario
+                                imagen: product.imageUrl,
+                                description: product.description,
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                product.name,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
+                          );
+                        },
+                        child: Card(
+                          margin: const EdgeInsets.all(8.0),
+                          elevation: 5,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 150, // Altura fija para la imagen
+                                child: Image.network(
+                                  product.imageUrl,
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                '\$${product.price}',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey[700],
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  product.name,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text(
+                                  '\$${product.price}',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey[700],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },

@@ -4,20 +4,24 @@ class ProductDetailsView extends StatelessWidget {
   final String nombre;
   final String precio;
   final String imagen;
+  final String description;
 
   ProductDetailsView({
     required this.nombre,
     required this.precio,
     required this.imagen,
+    required this.description,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(nombre), // Mostrar el nombre del producto en la barra superior
+        title:
+            Text(nombre), // Mostrar el nombre del producto en la barra superior
       ),
-      body: SingleChildScrollView( // Scroll si el contenido es largo
+      body: SingleChildScrollView(
+        // Scroll si el contenido es largo
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -57,7 +61,7 @@ class ProductDetailsView extends StatelessWidget {
               SizedBox(height: 20),
               // Descripción del producto (puedes agregar más detalles aquí)
               Text(
-                'Descripción del producto va aquí. Puedes detallar las características del producto, sus materiales, cuidados, etc.',
+                '\Descripcion${description}',
                 style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 20),
