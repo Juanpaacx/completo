@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../models/product_model.dart';
 
@@ -30,6 +30,56 @@ class CartView extends StatelessWidget {
           );
         },
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            onPressed: () {
+              // Aquí puedes agregar la lógica para proceder a pagar
+            },
+            child: Text('Proceder a Pagar'),
+          ),
+        ),
+      ),
+    );
+  }
+}
+*/
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../controller/cart_controller.dart';
+import '../models/product_model.dart';
+
+class CartView extends StatelessWidget {
+  final CartController cartController = Get.find();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Carrito de Compras'),
+      ),
+      body: Obx(() {
+        return cartController.cartItems.isEmpty
+            ? Center(child: Text('El carrito está vacío'))
+            : ListView.builder(
+                itemCount: cartController.cartItems.length,
+                itemBuilder: (context, index) {
+                  final product = cartController.cartItems[index];
+                  return ListTile(
+                    leading: Image.network(product.imageUrl, width: 50),
+                    title: Text(product.name),
+                    subtitle: Text('\$${product.price}'),
+                    trailing: IconButton(
+                      icon: Icon(Icons.remove_circle_outline),
+                      onPressed: () {
+                        cartController.removeFromCart(product);
+                      },
+                    ),
+                  );
+                },
+              );
+      }),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
